@@ -1,9 +1,69 @@
-audio {
-  width: 300px;
-
-  box-shadow: 2px 2px 4px 0px #006773;
+.audio-player-card {
+  width: 100%;
+  max-width: 780px;
+  margin: 16px auto;
+  padding: 14px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #4B74D9 0%, #5B8CFF 100%);
+  box-shadow: 0 12px 24px rgba(2, 17, 44, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.16);
 }
 
-.file-input {
-  display: none;
+.audio-player-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.track-name {
+  color: #f6f9ff;
+  font-size: 1.18rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.control-group {
+  display: flex;
+  gap: 8px;
+}
+
+audio {
+  width: 100%;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.13);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+  outline: none;
+}
+
+.recently-played {
+  max-width: 780px;
+  margin: 18px auto;
+  background: rgba(40, 56, 96, 0.48);
+  border-radius: 12px;
+  padding: 10px;
+}
+
+.recently-played h2 {
+  margin: 0 0 8px;
+  color: #d3dcff;
+}
+
+.recently-played ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.recently-played li {
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: #eef5ff;
+  transition: background-color 0.2s ease;
+}
+
+.recently-played li:hover {
+  background: rgba(255, 255, 255, 0.12);
 }

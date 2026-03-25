@@ -4,10 +4,35 @@
 
 .file-upload {
   display: flex;
-  align-items: center;
-  gap: 8px;
+  justify-content: center;
+  width: 100%;
+  margin-top: 12px;
 }
 
 .upload-btn {
-  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+  width: 180px;
+  border-radius: 8px;
+  background: #306BAC;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(25, 48, 106, 0.35);
 }
+
+.upload-btn:hover {
+  filter: brightness(1.1);
+}
+
+.upload-btn mat-icon {
+  font-size: 18px;
+  line-height: 1;
+  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
