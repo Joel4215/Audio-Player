@@ -44,18 +44,21 @@ export class AudioPlayerComponent implements OnInit {
       audio.muted = this.isMuted;
     }
 
-    playSong(song: Song) {
+    loadSong(song: Song) {
       this.fileUrl = song.url;
       this.fileName = song.name;
       this.songs.push(song);
       this.player.nativeElement.src = song.url;
-      this.player.nativeElement.play();
-      this.isPlaying = true;
+      this.isPlaying = false;
     }
 
     onFileSelected(song: Song) {
       this.fileUrl = song.url;
       this.fileName = song.name;
       this.songs.push(song);
+    }
+
+    removeSong(song: Song) {
+        this.songs = this.songs.filter(s => s !== song);
     }
 }

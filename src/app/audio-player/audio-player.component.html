@@ -20,6 +20,15 @@
 <div class="recently-played">
   <h2>Recently Played</h2>
   <ul>
-    <li (click)="playSong(song)" *ngFor="let song of songs">{{ song.name }}</li>
+<li *ngFor="let song of songs">
+  <div class="recent-item">
+    <div class="song-name" (click)="loadSong(song)">
+      {{ song.name }}
+    </div>
+    <button mat-icon-button (click)="removeSong(song)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</li>
   </ul>
 </div>
