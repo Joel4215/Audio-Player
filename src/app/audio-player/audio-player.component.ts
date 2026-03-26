@@ -45,17 +45,46 @@ export class AudioPlayerComponent implements OnInit {
     }
 
     loadSong(song: Song) {
+      const audio = this.player.nativeElement;
+
+      if (!audio.paused) {
+        // If something is already playing, pause it before loading the new track
+        audio.pause();
+        this.isPlaying = false;
+      }
+
       this.fileUrl = song.url;
       this.fileName = song.name;
-      this.songs.push(song);
-      this.player.nativeElement.src = song.url;
+
+      // Do not re-add to recently played if selecting from the history list
+      if (!this.songs.some(s => s.url === song.url && s.name === song.name)) {
+        this.songs.push(song);
+      }
+
+      audio.src = song.url;
+      audio.load();
+
+      // Do not auto-play; remain in play-ready state.
       this.isPlaying = false;
     }
 
     onFileSelected(song: Song) {
+      const audio = this.player.nativeElement;
+
+      if (!audio.paused) {
+        // stop playback on new upload
+        audio.pause();
+        this.isPlaying = false;
+      }
+
       this.fileUrl = song.url;
       this.fileName = song.name;
       this.songs.push(song);
+
+      // the uploaded file loads, but should not start playing automatically
+      audio.src = song.url;
+      audio.load();
+      this.isPlaying = false;
     }
 
     removeSong(song: Song) {

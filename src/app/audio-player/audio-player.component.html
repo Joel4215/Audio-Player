@@ -1,24 +1,33 @@
+<div class="header-container">
+  <h1 class="text-[72px] mb-2.5">Welcome to the Audio Player</h1>
+  <h2 class="text-4xl mb-2.5">Please select a file to upload and enjoy your music!</h2>
+</div>
+
+
+<div class="items-center justify-center mt-50">
 <div class="audio-player-card">
   <div class="audio-player-header">
+          <button mat-icon-button (click)="togglePlay()" [attr.aria-label]="isPlaying ? 'Pause' : 'Play'">
+        <mat-icon>{{ isPlaying ? 'pause' : 'play_circle' }}</mat-icon>
+      </button>
     <span class="track-name">{{ fileName || 'Song Name Here' }}</span>
 
     <div class="control-group">
       <button mat-icon-button (click)="toggleMute()" [attr.aria-label]="isMuted ? 'Unmute' : 'Mute'">
         <mat-icon>{{ isMuted ? 'volume_off' : 'volume_up' }}</mat-icon>
       </button>
-      <button mat-icon-button (click)="togglePlay()" [attr.aria-label]="isPlaying ? 'Pause' : 'Play'">
-        <mat-icon>{{ isPlaying ? 'pause' : 'play_circle' }}</mat-icon>
-      </button>
+
     </div>
   </div>
 
   <audio #player [src]="fileUrl"></audio>
 </div>
 
-<cr-file-upload (fileSelected)="onFileSelected($event)"></cr-file-upload>
+<cr-file-upload class="file-upload-spacing" (fileSelected)="onFileSelected($event)"></cr-file-upload>
 
+<div class="mt-50">
+<h2 class=" header-container text-4xl mb-2.5">Recently Played</h2>
 <div class="recently-played">
-  <h2>Recently Played</h2>
   <ul>
 <li *ngFor="let song of songs">
   <div class="recent-item">
@@ -31,4 +40,7 @@
   </div>
 </li>
   </ul>
+</div>
+</div>
+
 </div>
